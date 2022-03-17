@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     
     
     int flag = 0;
+    
     void Start()
     {
         
@@ -18,27 +19,28 @@ public class EnemyMovement : MonoBehaviour
     {
         if (flag == 0)
         {
-            transform.Translate(Vector2.right * 2f * Time.deltaTime);
+            transform.Translate(Vector2.right * 3f * Time.deltaTime);
         }
         else if(flag==1)
         {
-            transform.Translate(Vector2.left * 2f * Time.deltaTime);
+            transform.Translate(Vector2.left * 3f * Time.deltaTime);
         }
         if(transform.position.x>8.0f)
         {
            
-            transform.position = new Vector2(transform.position.x, transform.position.y - 1);
+            transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
             flag = 1;
         }
         if (transform.position.x < -8.0f)
         {
             
-            transform.position = new Vector2(transform.position.x, transform.position.y - 1);
+            transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
             flag = 0;
         }
         if(transform.position.y<-4.6f)
         {
             //Destroy(gameObject);
         }
+       
     }
 }
