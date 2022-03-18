@@ -10,4 +10,8 @@ public class EnemyBulletMovement : MonoBehaviour
     {
         transform.Translate(Vector2.down * 3f * Time.deltaTime);
     }
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }
