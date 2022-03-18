@@ -13,17 +13,21 @@ public class PlayerMovement : MonoBehaviour
     public GameObject enemyBullet;
     float time;
     //Rigidbody2D rb;
-    public GameObject player;
+   
     public GameObject resetPage;
     public Text gameText;
     public Button quit;
     public Button restart;
+    public Text liveText;
     ScoreScript scoreScript;
     Vector3 playerPosition;
     public bool IsGameOver=false;
+    int playerLives = 3;
+    
     void Start()
     {
 
+        
         quit.onClick.AddListener(Quit);
         restart.onClick.AddListener(Restart);
         scoreScript = GameObject.Find("ScoreManager").GetComponent<ScoreScript>();
@@ -97,21 +101,27 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyBullet")
         {
-            //playerPosition=gameObject.transform.position;
-            //Destroy(gameObject);
-            gameObject.SetActive(false);
-            Destroy(collision.gameObject);
-            LostGame();
-           
-          
+            if (playerLives >= 1)
+            {
+                liveText.text = "Lives: " + playerLives;
+                playerLives--;   
+                Destroy(collision.gameObject);
+                
+            }
+            else
+            {
+                LostGame();
+            }
 
         }
     }
 
     public void LostGame()
     {
+        gameObject.SetActive(false);
         resetPage.SetActive(true);
         gameText.text = "Lost the Game";
         IsGameOver = true;
     }
+   
 }
