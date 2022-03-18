@@ -72,17 +72,15 @@ public class PlayerMovement : MonoBehaviour
 
             }
             time = time + Time.deltaTime;
-            if (time >= 3.5f)
-            {
+            int i = Random.Range(0, 3);
+            int j = Random.Range(0, 4);
 
-                int i = Random.Range(0, 3);
-                int j = Random.Range(0, 4);
-                GameObject enemy = GameObject.Find("Enemy" + i + j);
-                if (enemy.activeInHierarchy == true)
-                {
+            GameObject enemy = GameObject.Find("Enemy" + i + j);
+
+            if (time >= 3.5f&& enemy!=null)
+            {
                     Vector3 enemyPosition = enemy.transform.position;
                     Instantiate(enemyBullet, enemyPosition + new Vector3(0f, -0.245f, 0f), Quaternion.identity);
-                }
                     //Debug.Log("Bullet launching from"+enemy.name);
                     time = 0f;
                 
