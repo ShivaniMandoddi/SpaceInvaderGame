@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 liveText.text = "Lives: " + playerLives;
                 playerLives--;   
-                Destroy(collision.gameObject);
+                //Destroy(collision.gameObject);
                 
             }
             else
